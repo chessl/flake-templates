@@ -111,12 +111,18 @@
           description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
         };
 
+        rust-toolchain = {
+          path = ./rust-toolchain;
+          description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
+        };
+
         riscv = {
           path = ./riscv;
           description = "RISC-V assembly toolchain";
         };
 
         # Aliases
+        rt = rust-toolchain;
         c = c-cpp;
         cpp = c-cpp;
       };
