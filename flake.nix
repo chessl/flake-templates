@@ -106,6 +106,26 @@
           description = "Empty dev template that you can customize at will";
         };
 
+        go = {
+          path = ./go;
+          description = "Go (Golang) development environment";
+        };
+
+        haskell = {
+          path = ./haskell;
+          description = "Haskell development environment";
+        };
+
+        node = {
+          path = ./node;
+          description = "Node.js development environment";
+        };
+
+        ruby = {
+          path = ./ruby;
+          description = "Ruby development environment";
+        };
+
         rust = {
           path = ./rust;
           description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
@@ -121,7 +141,13 @@
           description = "RISC-V assembly toolchain";
         };
 
+        zig = {
+          path = ./zig;
+          description = "Zig development environment";
+        };
+
         # Aliases
+        nodejs = node;
         rt = rust-toolchain;
         c = c-cpp;
         cpp = c-cpp;
