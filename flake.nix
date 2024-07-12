@@ -116,6 +116,11 @@
           description = "Haskell development environment";
         };
 
+        idris = {
+          path = ./idris;
+          description = "Idris2 development environment";
+        };
+
         node = {
           path = ./node;
           description = "Node.js development environment";
