@@ -16,14 +16,33 @@
             };
           };
 
-      in {
+      in
+      with pkgs;
+      {
+        packages.spike = stdenv.mkDerivation rec {
+          pname = "spike";
+          version = "master";
+          src = fetchFromGitHub {
+            owner = "riscv-software-src";
+            repo = "riscv-isa-sim";
+            rev = "52aff0233f5cc844ea047b4e16806f576cd8815b";
+            sha256 = "sha256-uutHnplq24wM4vsdxqfw2O9kLE2Pm3jNgb001jKsppQ=";
+          };
+          nativeBuildInputs = [ dtc ];
+          enableParallelBuilding = true;
+        };
 
         devShells = {
 
-          default = pkgs.mkShell {
+          default = mkShell {
             buildInputs = [
               riscv-toolchain.buildPackages.gcc
-              pkgs.qemu
+              riscv-toolchain.buildPackages.gdb
+              riscv-toolchain.buildPackages.binutils
+              riscv-toolchain.riscv-pk
+              qemu
+              dtc
+              self.packages.${system}.spike
             ];
           };
         };
