@@ -7,19 +7,9 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        riscv-toolchain =
-          import nixpkgs {
-            localSystem = "${system}";
-            crossSystem = {
-              config = "riscv64-none-elf";
-              abi = "lp64";
-            };
-          };
+        riscvPkgs = pkgs.pkgsCross.riscv64-embedded;
 
-      in
-      with pkgs;
-      {
-        packages.spike = stdenv.mkDerivation rec {
+        spike = with pkgs; stdenv.mkDerivation rec {
           pname = "spike";
           version = "master";
           src = fetchFromGitHub {
@@ -32,19 +22,24 @@
           enableParallelBuilding = true;
         };
 
-        devShells = {
+      in
+      with pkgs;
+      {
 
-          default = mkShell {
-            buildInputs = [
-              riscv-toolchain.buildPackages.gcc
-              riscv-toolchain.buildPackages.gdb
-              riscv-toolchain.buildPackages.binutils
-              riscv-toolchain.riscv-pk
-              qemu
-              dtc
-              self.packages.${system}.spike
-            ];
-          };
+        # https://discourse.nixos.org/t/risc-v-cross-compilation-on-aarch64-darwin/38721
+        # https://ayats.org/blog/nix-cross
+        # https://nixos.wiki/wiki/Cross_Compiling
+        devShells.default = riscvPkgs.stdenv.mkDerivation {
+          name = "nix-shell";
+          # get rid of ld warnings
+          hardeningDisable = [ "relro" "bindnow" ];
+          nativeBuildInputs = [
+            riscvPkgs.buildPackages.gdb
+            riscvPkgs.buildPackages.dtc
+            spike
+            riscvPkgs.riscv-pk
+            qemu
+          ];
         };
       });
 }
