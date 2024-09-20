@@ -32,6 +32,7 @@
         devShells.default = riscvPkgs.stdenv.mkDerivation {
           name = "nix-shell";
           # get rid of ld warnings
+          # https://nixos.org/manual/nixpkgs/stable/#sec-hardening-in-nixpkgs
           hardeningDisable = [ "relro" "bindnow" ];
           nativeBuildInputs = [
             riscvPkgs.buildPackages.gdb
