@@ -146,6 +146,16 @@
           description = "RISC-V assembly toolchain";
         };
 
+        bluespec = {
+          path = ./bluespec;
+          description = "Bluespec dev env";
+        };
+
+        clash = {
+          path = ./clash;
+          description = "Clash dev env";
+        };
+
         zig = {
           path = ./zig;
           description = "Zig development environment";

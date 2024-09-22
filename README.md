@@ -36,6 +36,9 @@ Once your preferred template has been initialized, you can use the provided shel
 | [Node.js][node]          | [`node`](./node/)             |
 | [Ruby]                   | [`ruby`](./ruby/)             |
 | [Rust]                   | [`rust`](./rust/)             |
+| [RISC-V]                 | [`riscv`](./riscv/)           |
+| [BlueSpec]               | [`bluespec`](./bluespec/)     |
+| [Clash]                  | [`clash`](./clash/)           |
 | [Zig]                    | [`zig`](./zig/)               |
 
 ## Template contents
