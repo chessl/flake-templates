@@ -22,8 +22,26 @@
           {
             format = final.writeShellApplication {
               name = "format";
-              runtimeInputs = with final; [ nixpkgs-fmt ];
-              text = "nixpkgs-fmt '**/*.nix'";
+              runtimeInputs = with final; [
+                nixpkgs-fmt
+                (mdformat.withPlugins (
+                  p: with p; [
+                    mdformat-tables
+                    # mdformat-footnote
+                    # mdformat-frontmatter
+                    # mdformat-beautysh
+                    # mdformat-shfmt
+                    # mdformat-web
+                    # mdformat-gofmt
+                    # mdformat-rustfmt
+                  ]
+                ))
+
+              ];
+              text = ''
+                nixpkgs-fmt -- **/*.nix
+                mdformat README.md
+              '';
             };
 
             # only run this locally, as Actions will run out of disk space
@@ -159,6 +177,11 @@
         zig = {
           path = ./zig;
           description = "Zig development environment";
+        };
+
+        markdown = {
+          path = ./markdown;
+          description = "Markdown writing environment";
         };
 
         # Aliases
