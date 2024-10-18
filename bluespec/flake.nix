@@ -13,8 +13,10 @@
             version = "2024.07";
 
             src = fetchzip {
-              url = "https://github.com/B-Lang-org/bsc/releases/download/${version}/bsc-${version}-macos-14.tar.gz";
-              sha256 = "sha256:0bxc08c4d7waggd7rbr8hjz2v800ma1jac5xl4ywjvsr059vnv8w";
+              url =
+                "https://github.com/B-Lang-org/bsc/releases/download/${version}/bsc-${version}-macos-14.tar.gz";
+              sha256 =
+                "sha256:0bxc08c4d7waggd7rbr8hjz2v800ma1jac5xl4ywjvsr059vnv8w";
             };
 
             installPhase = ''
@@ -23,7 +25,8 @@
             '';
 
             meta = {
-              description = "Toolchain for the Bluespec Hardware Definition Language";
+              description =
+                "Toolchain for the Bluespec Hardware Definition Language";
               homepage = "https://github.com/B-Lang-org/bsc";
               license = lib.licenses.bsd3;
               mainProgram = "bsc";
@@ -31,15 +34,8 @@
             };
           };
 
+      in with pkgs; {
 
-      in
-      with pkgs;
-      {
-
-        devShells.default = mkShell {
-          packages = [
-            bluespecPkg
-          ];
-        };
+        devShells.default = mkShell { packages = [ bluespecPkg ]; };
       });
 }

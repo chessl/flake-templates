@@ -1,5 +1,6 @@
 {
-  description = "Personal, ready-made templates for easily creating flake-driven environments";
+  description =
+    "Personal, ready-made templates for easily creating flake-driven environments";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -8,7 +9,8 @@
       overlays = [
         (final: prev:
           let
-            getSystem = "SYSTEM=$(nix eval --impure --raw --expr 'builtins.currentSystem')";
+            getSystem =
+              "SYSTEM=$(nix eval --impure --raw --expr 'builtins.currentSystem')";
             forEachDir = exec: ''
               for dir in */; do
                 (
@@ -18,14 +20,14 @@
                 )
               done
             '';
-          in
-          {
+          in {
             format = final.writeShellApplication {
               name = "format";
               runtimeInputs = with final; [
                 nixpkgs-fmt
-                (mdformat.withPlugins (
-                  p: with p; [
+                (mdformat.withPlugins (p:
+                  with p;
+                  [
                     mdformat-tables
                     # mdformat-footnote
                     # mdformat-frontmatter
@@ -34,8 +36,7 @@
                     # mdformat-web
                     # mdformat-gofmt
                     # mdformat-rustfmt
-                  ]
-                ))
+                  ]))
 
               ];
               text = ''
@@ -92,12 +93,12 @@
             };
           })
       ];
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit overlays system; };
-      });
-    in
-    {
+      supportedSystems =
+        [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      forEachSupportedSystem = f:
+        nixpkgs.lib.genAttrs supportedSystems
+        (system: f { pkgs = import nixpkgs { inherit overlays system; }; });
+    in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [ build check format update nixpkgs-fmt ];
@@ -151,12 +152,14 @@
 
         rust = {
           path = ./rust;
-          description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
+          description =
+            "Rust development environment with Rust version defined by a rust-toolchain.toml file";
         };
 
         rust-toolchain = {
           path = ./rust-toolchain;
-          description = "Rust development environment with Rust version defined by a rust-toolchain.toml file";
+          description =
+            "Rust development environment with Rust version defined by a rust-toolchain.toml file";
         };
 
         riscv = {

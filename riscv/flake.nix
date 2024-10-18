@@ -9,22 +9,21 @@
 
         riscvPkgs = pkgs.pkgsCross.riscv64-embedded;
 
-        spike = with pkgs; stdenv.mkDerivation rec {
-          pname = "spike";
-          version = "master";
-          src = fetchFromGitHub {
-            owner = "riscv-software-src";
-            repo = "riscv-isa-sim";
-            rev = "52aff0233f5cc844ea047b4e16806f576cd8815b";
-            sha256 = "sha256-uutHnplq24wM4vsdxqfw2O9kLE2Pm3jNgb001jKsppQ=";
+        spike = with pkgs;
+          stdenv.mkDerivation rec {
+            pname = "spike";
+            version = "master";
+            src = fetchFromGitHub {
+              owner = "riscv-software-src";
+              repo = "riscv-isa-sim";
+              rev = "52aff0233f5cc844ea047b4e16806f576cd8815b";
+              sha256 = "sha256-uutHnplq24wM4vsdxqfw2O9kLE2Pm3jNgb001jKsppQ=";
+            };
+            nativeBuildInputs = [ dtc ];
+            enableParallelBuilding = true;
           };
-          nativeBuildInputs = [ dtc ];
-          enableParallelBuilding = true;
-        };
 
-      in
-      with pkgs;
-      {
+      in with pkgs; {
 
         # https://discourse.nixos.org/t/risc-v-cross-compilation-on-aarch64-darwin/38721
         # https://ayats.org/blog/nix-cross
