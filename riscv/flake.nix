@@ -28,12 +28,11 @@
         # https://discourse.nixos.org/t/risc-v-cross-compilation-on-aarch64-darwin/38721
         # https://ayats.org/blog/nix-cross
         # https://nixos.wiki/wiki/Cross_Compiling
-        devShells.default = riscvPkgs.stdenv.mkDerivation {
-          name = "nix-shell";
+        devShells.default = riscvPkgs.mkShell {
           # get rid of ld warnings
           # https://nixos.org/manual/nixpkgs/stable/#sec-hardening-in-nixpkgs
           hardeningDisable = [ "relro" "bindnow" ];
-          nativeBuildInputs = [
+          packages = [
             riscvPkgs.buildPackages.gdb
             riscvPkgs.buildPackages.dtc
             spike
