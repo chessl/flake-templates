@@ -33,15 +33,20 @@
     in {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [
-            rustToolchain
-            openssl
-            pkg-config
-            cargo-deny
-            cargo-edit
-            cargo-watch
-            rust-analyzer
-          ];
+          packages = with pkgs;
+            [
+              rustToolchain
+              openssl
+              pkg-config
+              cargo-deny
+              cargo-edit
+              cargo-watch
+              rust-analyzer
+            ] ++ lib.optionals pkgs.stdenv.isDarwin [
+              # Additional darwin specific inputs can be set here
+              libiconv
+              darwin.apple_sdk.frameworks.SystemConfiguration
+            ];
         };
       });
     };
