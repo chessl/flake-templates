@@ -167,6 +167,11 @@
           description = "RISC-V assembly toolchain";
         };
 
+        riscv-rust-linux = {
+          path = ./riscv-rust-linux;
+          description = "RISC-V assembly toolchain with Rust and Linux VM";
+        };
+
         bluespec = {
           path = ./bluespec;
           description = "Bluespec dev env";
