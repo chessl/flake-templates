@@ -1,0 +1,4 @@
+version = "0.1"
+assemblers = { gas = true }
+instruction_sets = { riscv = true }
+opts = { compiler = "gcc" }
