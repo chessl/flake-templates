@@ -41,7 +41,23 @@
               cargo-deny
               cargo-edit
               cargo-watch
+              cargo-udeps
               rust-analyzer
+
+              # profiling
+              gnuplot
+              cargo-flamegraph
+              samply
+
+              # benches
+              oha
+
+              # debug
+              socat
+
+              # unittest
+              cargo-nextest
+
             ] ++ lib.optionals pkgs.stdenv.isDarwin [
               # Additional darwin specific inputs can be set here
               libiconv

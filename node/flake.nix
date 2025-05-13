@@ -5,13 +5,21 @@
 
   outputs = { self, nixpkgs }:
     let
+      nodejsVersion = 22; # Change this to update the whole stack
       overlays = [
-        (final: prev: rec {
-          nodejs = prev.nodejs_latest;
+        (final: prev: {
+          nodejs = prev."nodejs_${toString nodejsVersion}";
           typescript-language-server =
             prev.nodePackages.typescript-language-server;
         })
       ];
+      # overlays = [
+      #   (final: prev: rec {
+      #     nodejs = prev.nodejs_latest;
+      #     typescript-language-server =
+      #       prev.nodePackages.typescript-language-server;
+      #   })
+      # ];
       supportedSystems =
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forEachSupportedSystem = f:
@@ -24,9 +32,7 @@
             node2nix
 
             nodejs
-            # You can set the major version of Node.js to a specific one instead
-            # of the default version
-            # pkgs.nodejs-19_x
+            nodePackages.rush
 
             pnpm
             typescript
