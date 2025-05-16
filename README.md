@@ -37,7 +37,6 @@ Once your preferred template has been initialized, you can use the provided shel
 | \[Ruby\]                | [`ruby`](./ruby/)         |
 | \[Rust\]                | [`rust`](./rust/)         |
 | \[RISC-V\]              | [`riscv`](./riscv/)       |
-| \[BlueSpec\]            | [`bluespec`](./bluespec/) |
 | \[Clash\]               | [`clash`](./clash/)       |
 | \[Zig\]                 | [`zig`](./zig/)           |
 | \[Markdown\]            | [`markdown`](./markdown/) |
