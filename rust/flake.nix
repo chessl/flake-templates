@@ -61,6 +61,7 @@
             ] ++ lib.optionals pkgs.stdenv.isDarwin [
               # Additional darwin specific inputs can be set here
               libiconv
+              apple-sdk
             ];
         };
       });
