@@ -156,12 +156,6 @@
             "Rust development environment with Rust version defined by a rust-toolchain.toml file";
         };
 
-        rust-toolchain = {
-          path = ./rust-toolchain;
-          description =
-            "Rust development environment with Rust version defined by a rust-toolchain.toml file";
-        };
-
         riscv = {
           path = ./riscv;
           description = "RISC-V assembly toolchain";
@@ -170,11 +164,6 @@
         riscv-rust-linux = {
           path = ./riscv-rust-linux;
           description = "RISC-V assembly toolchain with Rust and Linux VM";
-        };
-
-        bluespec = {
-          path = ./bluespec;
-          description = "Bluespec dev env";
         };
 
         clash = {
@@ -194,7 +183,6 @@
 
         # Aliases
         nodejs = node;
-        rt = rust-toolchain;
         c = c-cpp;
         cpp = c-cpp;
       };
