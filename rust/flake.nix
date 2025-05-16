@@ -42,6 +42,7 @@
               cargo-edit
               cargo-watch
               cargo-udeps
+              cargo-wizard
               rust-analyzer
 
               # profiling
