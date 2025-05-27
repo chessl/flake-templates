@@ -2,6 +2,7 @@ disallowed-methods = [
   { path = "std::collections::HashMap::new", reason = "use `HashMap::with_capacity` instead." },
   { path = "std::string::String::new", reason = "use `String::with_capacity` instead." },
   { path = "std::vec::Vec::new", reason = "use `Vec::with_capacity` instead." },
+  { path = "std::thread::spawn", reason = "use `std::thread::scope` instead, see https://corrode.dev/blog/sharp-edges-in-rust-std/" },
   { path = "serde_json::from_reader", reason = "`from_reader` is extremely slow, see https://github.com/serde-rs/json/issues/160." },
 ]
 
