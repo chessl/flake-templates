@@ -19,6 +19,7 @@
             haskell-language-server
             ghcid # REPL daemon
             hlint # linter
+            ormolu # formatter
           ];
         };
       });
