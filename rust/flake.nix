@@ -38,12 +38,14 @@
               rustToolchain
               openssl
               pkg-config
+              cargo-info
               cargo-deny
               cargo-edit
               cargo-watch
               cargo-udeps
               cargo-wizard
               rust-analyzer
+              bacon
 
               # profiling
               gnuplot
