@@ -176,6 +176,11 @@
           description = "Zig development environment";
         };
 
+        flutter = {
+          path = ./flutter;
+          description = "Flutter development environment";
+        };
+
         markdown = {
           path = ./markdown;
           description = "Markdown writing environment";

@@ -39,6 +39,7 @@ Once your preferred template has been initialized, you can use the provided shel
 | \[RISC-V\]              | [`riscv`](./riscv/)       |
 | \[Clash\]               | [`clash`](./clash/)       |
 | \[Zig\]                 | [`zig`](./zig/)           |
+| \[Flutter\]             | [`zig`](./flutter/)       |
 | \[Markdown\]            | [`markdown`](./markdown/) |
 
 ## Template contents
@@ -100,6 +101,10 @@ The sections below list what each template includes. In all cases, you're free t
 ### [`zig`](./zig/)
 
 - \[Zig\] 0.10.1
+
+### [`flutter`](./flutter/)
+
+- \[Flutter\] 0.10.1
 
 ### [`markdown`](./markdown/)
 
