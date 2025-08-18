@@ -166,6 +166,16 @@
           description = "RISC-V assembly toolchain with Rust and Linux VM";
         };
 
+        loongarch = {
+          path = ./loonloongarch;
+          description = "LoongArch assembly toolchain";
+        };
+
+        loongarch-rust-linux = {
+          path = ./loongarch-rust-linux;
+          description = "LoongArch assembly toolchain with Rust and Linux VM";
+        };
+
         clash = {
           path = ./clash;
           description = "Clash dev env";
