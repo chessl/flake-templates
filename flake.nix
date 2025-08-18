@@ -167,7 +167,7 @@
         };
 
         loongarch = {
-          path = ./loonloongarch;
+          path = ./loongarch;
           description = "LoongArch assembly toolchain";
         };
 
